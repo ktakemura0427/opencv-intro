@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code Display with TOC</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-okaidia.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #fafafa;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .toc {
+            width: 20%;
+            border-right: 2px solid #ccc;
+            padding-right: 20px;
+        }
+        .content {
+            width: 75%;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: transparent;
+            border-left: 5px solid #f36d33;
+            overflow: auto;
+            padding: 1em;
+            position: relative;
+        }
+        code {
+            font-size: 1.1em;
+        }
+        a {
+            text-decoration: none;
+            color: #06f;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Custom styling for line numbers */
+        .line-numbers .line-numbers-rows {
+            border-right: 1px solid #ddd;
+        }
+        .line-numbers-rows > span:before {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Introduction to Image Processing with OpenCV</h1>
+    <p>This introduction sits are creating for the experimental class at Dept. of Applied Computer Engineering, TOKAI Univ.</p>
+    <div class="container">
+        <div class="toc">
+            <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#source1">read_img.py</a></li>
+<li><a href="#source2">write_img.py</a></li>
+<li><a href="#source3">capture.py</a></li>
+<li><a href="#source4">capture_class.py</a></li>
+        </ol>
+    </div>
+    <div class="content">
+        <h1>Python Code Examples</h1>
+        <h2 id="source1">read_img.py</h2><p>Execute the following sample code to read image file and show it.</p><pre class ="line-numbers"><code class="language-python">import cv2
+ 
+def main():
+    img = cv2.imread(&#x27;./img/Mandrill.png&#x27;)
+    cv2.imshow(&#x27;image&#x27;,img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h2 id="source2">write_img.py</h2><p>Execute the following sample code to save image file.</p><pre class ="line-numbers"><code class="language-python">import cv2
+import numpy as np
+
+def main():
+    img = cv2.imread(&#x27;./img/Mandrill.png&#x27;)
+    gray= cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    cv2.imshow(&#x27;image&#x27;, gray)
+    cv2.imwrite(&#x27;./img/Mandrill_gray.png&#x27;, gray)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h2 id="source3">capture.py</h2><p>This script manages database connections.</p><pre class ="line-numbers"><code class="language-python">import cv2
+ 
+def main():
+    cap = cv2.VideoCapture(0)
+
+    while(1):
+        ret, frame = cap.read()
+        cv2.imshow(&#x27;frame&#x27;,frame)
+        k = cv2.waitKey(30) &amp; 0xff
+        if k == 27:
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre>
+<h2 id="source4">capture_class.py</h2><p>This script manages database connections.</p><pre class ="line-numbers"><code class="language-python">import cv2
+
+class Application:
+    def __init__(self,device_num):
+        print(&#x27;constructor&#x27;)
+        self.cap = cv2.VideoCapture(device_num)
+
+
+    def __del__(self):
+        print(&#x27;destructor&#x27;)
+        self.cap.release()
+        cv2.destroyAllWindows()
+
+
+    def run(self):
+        while(1):
+            ret, frame = self.cap.read()
+            cv2.imshow(&#x27;image&#x27;,frame)
+            k = cv2.waitKey(30) &amp; 0xff
+            if k == 27:
+                break
+
+
+if __name__ == &#x27;__main__&#x27;:
+    app=Application(0)
+    app.run()
+</code></pre>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</body>
+</html>

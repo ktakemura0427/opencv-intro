@@ -1,0 +1,21 @@
+
+{
+    "files": [
+    {
+	"filename": "./code/read_img.py",
+	"description": "Execute the following sample code to read image file and show it."
+    },
+    {
+      "filename": "./code/write_img.py",
+      "description": "Execute the following sample code to save image file."
+    },
+    {
+      "filename": "./code/capture.py",
+      "description": "This script manages database connections."
+    },
+    {
+      "filename": "./code/capture_class.py",
+      "description": "This script manages database connections."
+    }
+  ]
+}
