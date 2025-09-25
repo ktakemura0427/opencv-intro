@@ -1,6 +1,7 @@
 import cv2
  
 def main():
+    cv2.namedWindow('frame',cv2.WINDOW_AUTOSIZE)
     cap = cv2.VideoCapture(0)
 
     while(1):
